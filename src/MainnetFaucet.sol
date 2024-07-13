@@ -10,10 +10,12 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 /// @dev Funds are only sent after a user provides their proof of identity and is only callable once per contract
 contract MainnetFaucet is Ownable, ReentrancyGuard {
     uint public faucetAmount = 0.0001 ether;        // Change this to the desired faucet amount
+    mapping(string => bool) public usedProofs;      // Mapping of proofs that have been used
 
     error InsufficientFaucetBalance();
     error TransferFailed();
     error WithdrawalFailed();
+    error ProofAlreadyUsed();
 
     event FundsDistributed(address indexed recipient, uint faucetAmount);
 
@@ -21,15 +23,25 @@ contract MainnetFaucet is Ownable, ReentrancyGuard {
 
     /// @notice Distributes funds from the faucet to the specified receipient
     /// @param recipient The address to send the funds to
-    function requestFunds(address recipient) external onlyOwner nonReentrant {
+    function requestFunds(address recipient, string calldata proof) external onlyOwner nonReentrant {
+        // Check if the proof has already been used
+        if (usedProofs[proof]) {
+            revert ProofAlreadyUsed();
+        }
+        
+        // Check if the contract has enough funds to distribute
         if (address(this).balance < faucetAmount) {
             revert InsufficientFaucetBalance();
         }
 
+        // Send the funds to the recipient
         (bool success, ) = recipient.call{value: faucetAmount}("");
         if (!success) {
             revert TransferFailed();
         }
+
+        // Mark the proof as used
+        usedProofs[proof] = true;
 
         emit FundsDistributed(recipient, faucetAmount);
     }
