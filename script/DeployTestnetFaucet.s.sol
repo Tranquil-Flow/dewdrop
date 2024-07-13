@@ -7,8 +7,7 @@ import "../src/MainnetFaucet.sol";
 contract DeployTestnetFaucet is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        address deployerAddress = vm.addr(deployerPrivateKey);
-        uint256 initialFunding = 1 ether; // Amount to fund the contract with
+        uint256 initialFunding = 0.0001 ether; // Amount to fund the contract with
 
         uint256 chainId;
         assembly {

@@ -5,10 +5,15 @@ libs = ["lib"]
 
 [rpc_endpoints]
 apechain = "${APECHAIN_RPC_URL}"
-arbitrum = "${ARBITRUM_RPC_URL}"
+arbitrum = "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
 base = "${BASE_RPC_URL}"
 celo = "${CELO_RPC_URL}"
 morph = "${MORPH_RPC_URL}"
 rootstock = "${ROOTSTOCK_RPC_URL}"
 scroll = "${SCROLL_RPC_URL}"
 zircuit = "${ZIRCUIT_RPC_URL}"
+
+[etherscan]
+arbitrum = { key = "CAH9QG46T9H4WZ6U47MPKHWRRYCXDAN6BG" }
+holesky = { key = "WY4F1JEZT6T364HA9N7R8SANWEEMVY6AP3" }
+amoy = { key = "BBTE2Q5FRZWFNIQY53PJGZTVVJFR1EYQFW" }
