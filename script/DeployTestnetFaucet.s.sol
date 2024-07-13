@@ -7,6 +7,7 @@ import "../src/MainnetFaucet.sol";
 contract DeployTestnetFaucet is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        address deployerAddress = vm.addr(deployerPrivateKey);
         uint256 initialFunding = 0.0001 ether; // Amount to fund the contract with
 
         uint256 chainId;
@@ -23,6 +24,7 @@ contract DeployTestnetFaucet is Script {
 
         MainnetFaucet faucet = new MainnetFaucet();
         console.log("TestnetFaucet deployed at:", address(faucet));
+        console.log("Deployer and Owner of contract is:", deployerAddress);
 
         // Fund the contract
         (bool success, ) = address(faucet).call{value: initialFunding}("");

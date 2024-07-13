@@ -7,6 +7,7 @@ import "../src/MainnetFaucet.sol";
 contract DeployMainnetFaucet is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        address deployerAddress = vm.addr(deployerPrivateKey);
 
         uint256 chainId;
         assembly {
@@ -17,6 +18,7 @@ contract DeployMainnetFaucet is Script {
         require(bytes(chainName).length > 0, "Deployment is only allowed on recognized mainnets");
 
         console.log("Deploying MainnetFaucet on:", chainName);
+        console.log("Deployer and Owner of contract is:", deployerAddress);
 
         vm.startBroadcast(deployerPrivateKey);
 
