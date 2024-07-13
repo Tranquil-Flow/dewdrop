@@ -47,9 +47,37 @@ $ anvil
 
 ### Deploy
 
+#### Mainnets
+
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script script/DeployMainnetFaucet.s.sol:DeployMainnetFaucet --rpc-url $RPC_URL --broadcast -vvvv
 ```
+
+Replace $RPC_URL with one of the following to deploy there:
+
+- apechain [CURRENTLY UNAVAILABLE] 
+- arbitrum
+- base
+- celo
+- morph
+- rootstock
+- scroll
+- zircuit
+
+### Testnets
+
+```shell
+$ forge script script/DeployTestnetFaucet.s.sol:DeployTestnetFaucet --rpc-url $RPC_URL --broadcast -vvvv
+```
+
+- apechainTest
+- arbitrumTest
+- baseTest
+- celoTest
+- morphTest
+- rootstockTest
+- scrollTest
+- zircuitTest
 
 ### Cast
 
@@ -64,3 +92,6 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+### TO-DO
+
+- Change deploy scripts to be marked as ${chain}Test and make ${chain} deployment for mainnet

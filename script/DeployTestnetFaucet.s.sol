@@ -35,6 +35,7 @@ contract DeployTestnetFaucet is Script {
     }
 
     function getTestnetChainName(uint256 chainId) internal pure returns (string memory) {
+        if (chainId == 8470) return "Apechain Testnet";
         if (chainId == 421614) return "Arbitrum Sepolia Testnet";
         if (chainId == 84532) return "Base Sepolia Testnet";
         if (chainId == 44787) return "Celo Alfajores Testnet";
