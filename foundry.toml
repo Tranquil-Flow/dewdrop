@@ -9,6 +9,7 @@ optimizer_runs = 200
 apechain = "https://jenkins.rpc.caldera.xyz/http"
 arbitrum = "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
 aurora = "https://testnet.aurora.dev"
+avail = "https://op-plasma-avail-testnet.alt.technology"
 base = "https://base-sepolia-rpc.publicnode.com"
 celo = "https://alfajores-forno.celo-testnet.org"
 morph = "https://rpc-holesky.morphl2.io"

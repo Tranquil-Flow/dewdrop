@@ -40,6 +40,7 @@ contract DeployTestnetFaucetFlat is Script {
         if (chainId == 1798) return "Apechain Jenkins Testnet";
         if (chainId == 421614) return "Arbitrum Sepolia Testnet";
         if (chainId == 1313161555) return "Aurora Testnet (NEAR)";
+        if (chainId == 731265) return "Avail OP Plasma Sepolia Testnet";
         if (chainId == 84532) return "Base Sepolia Testnet";
         if (chainId == 44787) return "Celo Alfajores Testnet";
         if (chainId == 2810) return "Morph Holesky Testnet";
