@@ -2,13 +2,13 @@
 pragma solidity 0.8.25;
 
 import "forge-std/Script.sol";
-import "../src/MainnetFaucet.sol";
+import "../src/MainnetFaucetFlat.sol";
 
-contract DeployTestnetFaucet is Script {
+contract DeployTestnetFaucetFlat is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         address deployerAddress = vm.addr(deployerPrivateKey);
-        uint256 initialFunding = 0.0001 ether; // Amount to fund the contract with
+        uint256 initialFunding = 0.01 ether; // Amount to fund the contract with
 
         uint256 chainId;
         assembly {
@@ -18,12 +18,12 @@ contract DeployTestnetFaucet is Script {
 
         require(bytes(chainName).length > 0, "Deployment is only allowed on recognized testnets");
 
-        console.log("Deploying TestnetFaucet on:", chainName);
+        console.log("Deploying TestnetFaucetFlat on:", chainName);
 
         vm.startBroadcast(deployerPrivateKey);
 
         MainnetFaucet faucet = new MainnetFaucet();
-        console.log("TestnetFaucet deployed at:", address(faucet));
+        console.log("TestnetFaucetFlat deployed at:", address(faucet));
         console.log("Deployer and Owner of contract is:", deployerAddress);
 
         // Fund the contract
